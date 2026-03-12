@@ -1,6 +1,6 @@
 {
   "name": "jsonresume-theme-academic",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Academic serif theme for JSON Resume with EB Garamond typography, small caps headings, and gold accents. Designed for print and PDF.",
   "type": "module",
   "main": "dist/index.cjs",
