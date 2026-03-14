@@ -39,9 +39,15 @@
     "serif",
     "garamond",
     "curriculum-vitae",
-    "pdf"
+    "pdf",
+    "resume-builder",
+    "resume-template",
+    "print",
+    "typography",
+    "a4",
+    "puppeteer"
   ],
-  "author": "Ebenezer",
+  "author": "Ebenezer Isaac",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -50,6 +56,10 @@
   "homepage": "https://github.com/ebenezer-isaac/jsonresume-theme-academic",
   "bugs": {
     "url": "https://github.com/ebenezer-isaac/jsonresume-theme-academic/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://llmconveyors.com"
   },
   "engines": {
     "node": ">=20"

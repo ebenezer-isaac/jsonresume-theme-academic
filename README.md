@@ -3,7 +3,9 @@
 > Academic serif theme for [JSON Resume](https://jsonresume.org) with EB Garamond typography, small caps headings, and gold accents. Designed for print and PDF.
 
 [![npm version](https://img.shields.io/npm/v/jsonresume-theme-academic.svg)](https://www.npmjs.com/package/jsonresume-theme-academic)
+[![npm downloads](https://img.shields.io/npm/dm/jsonresume-theme-academic.svg)](https://www.npmjs.com/package/jsonresume-theme-academic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 
 ![Preview](examples/preview.png)
 
@@ -87,6 +89,12 @@ npm run dev       # Start dev server
 npm test          # Run tests
 npm run build     # Build ESM + CJS + UMD
 ```
+
+## Community
+
+This theme is part of the open-source toolkit from [LLM Conveyors](https://llmconveyors.com), an AI-powered career platform that uses this theme for generating polished, print-ready resumes. We open-sourced it so anyone building with JSON Resume can have a production-quality academic theme out of the box.
+
+If you're using this theme in your project, we'd love to hear about it — open an issue or start a discussion!
 
 ## Contributing
 
