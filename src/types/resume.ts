@@ -103,6 +103,7 @@ export interface ResumeMeta {
   readonly version?: string;
   readonly lastModified?: string;
   readonly headings?: Readonly<Partial<Record<string, string>>>;
+  readonly months?: Readonly<Partial<Record<string, string>>>;
 }
 
 export interface ResumeSchema {

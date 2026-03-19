@@ -1,16 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import { renderEducation } from '../../src/sections/education';
+import { MONTHS } from "../../src/constants.js";
 
 describe('renderEducation', () => {
   it('returns empty for undefined/empty education', () => {
-    expect(renderEducation(undefined, 'Education')).toBe('');
-    expect(renderEducation([], 'Education')).toBe('');
+    expect(renderEducation(undefined, 'Education', MONTHS)).toBe('');
+    expect(renderEducation([], 'Education', MONTHS)).toBe('');
   });
 
   it('renders degree from studyType and area', () => {
     const html = renderEducation(
       [{ studyType: 'B.S.', area: 'Computer Science' }],
       'Education',
+      MONTHS
     );
     expect(html).toContain('B.S. Computer Science');
   });
@@ -19,6 +21,7 @@ describe('renderEducation', () => {
     const html = renderEducation(
       [{ institution: 'MIT', endDate: '2024-05' }],
       'Education',
+      MONTHS
     );
     expect(html).toContain('May 2024');
   });
@@ -28,6 +31,7 @@ describe('renderEducation', () => {
     const html = renderEducation(
       [{ institution: 'MIT', startDate: `${futureYear}-06` }],
       'Education',
+      MONTHS
     );
     expect(html).toContain('Expected');
   });
@@ -36,6 +40,7 @@ describe('renderEducation', () => {
     const html = renderEducation(
       [{ institution: 'Stanford', score: 'GPA: 3.9/4.0' }],
       'Education',
+      MONTHS
     );
     expect(html).toContain('Stanford | GPA: 3.9/4.0');
   });
@@ -44,6 +49,7 @@ describe('renderEducation', () => {
     const html = renderEducation(
       [{ institution: 'MIT', courses: ['Algorithms', 'Data Structures'] }],
       'Education',
+      MONTHS
     );
     expect(html).toContain('Algorithms');
     expect(html).toContain('Data Structures');

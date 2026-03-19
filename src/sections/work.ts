@@ -32,9 +32,12 @@ function parseWorkMeta(summary: string | undefined): {
   return { techStack, client, narrative: remaining };
 }
 
-function renderWorkEntry(entry: ResumeWorkEntry): string {
+function renderWorkEntry(
+  entry: ResumeWorkEntry,
+  months: Readonly<Record<string, string>>
+): string {
   const { techStack, client, narrative } = parseWorkMeta(entry.summary);
-  const duration = dateRange(entry.startDate, entry.endDate);
+  const duration = dateRange(entry.startDate, entry.endDate, months);
 
   return `
     <div class="work-entry">
@@ -63,11 +66,11 @@ function renderWorkEntry(entry: ResumeWorkEntry): string {
     </div>`;
 }
 
-export function renderWork(work: readonly ResumeWorkEntry[] | undefined, heading: string): string {
+export function renderWork(work: readonly ResumeWorkEntry[] | undefined, heading: string, months: Readonly<Record<string, string>>): string {
   if (!has(work)) return '';
   return `
     ${sectionTitle(heading)}
     <div class="section-body">
-      ${work.map(renderWorkEntry).join('')}
+      ${work.map(entry => renderWorkEntry(entry, months)).join('')}
     </div>`;
 }

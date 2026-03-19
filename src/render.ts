@@ -1,5 +1,6 @@
 import type { ResumeSchema } from './types/resume.js';
 import { DEFAULT_HEADINGS } from './constants.js';
+import { MONTHS } from './constants.js';
 import { esc } from './utils/escape.js';
 import { renderHeader } from './sections/header.js';
 import { renderSummary } from './sections/summary.js';
@@ -14,12 +15,21 @@ import css from './styles/academic.css?inline';
 
 export function render(resume: ResumeSchema): string {
   const h = { ...DEFAULT_HEADINGS };
-
   const metaHeadings = resume?.meta?.headings;
   if (metaHeadings) {
     for (const [key, value] of Object.entries(metaHeadings)) {
       if (value && key in h) {
         h[key] = value;
+      }
+    }
+  }
+
+  const m = { ...MONTHS };
+  const metaMonths = resume?.meta?.months;
+  if (metaMonths) {
+    for (const [key, value] of Object.entries(metaMonths)) {
+      if (value && key in m) {
+        m[key] = value;
       }
     }
   }
@@ -43,9 +53,9 @@ export function render(resume: ResumeSchema): string {
     ${renderHeader(basics)}
     ${renderSummary(basics.summary, h.summary)}
     ${renderSkills(resume.skills, h.skills)}
-    ${renderWork(resume.work, h.experience)}
+    ${renderWork(resume.work, h.experience, m)}
     ${renderProjects(resume.projects, h.projects)}
-    ${renderEducation(resume.education, h.education)}
+    ${renderEducation(resume.education, h.education, m)}
     ${renderVolunteer(resume.volunteer, h.volunteer)}
     ${renderCertificates(resume.certificates, h.certifications)}
     ${renderAdditional(resume, h.additional)}
