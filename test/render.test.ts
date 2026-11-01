@@ -27,9 +27,16 @@ describe('render', () => {
     expect(html).toContain('EB+Garamond');
   });
 
-  it('includes Font Awesome', () => {
+  it('uses no icon font', () => {
     const html = render(fixture as ResumeSchema);
-    expect(html).toContain('font-awesome');
+    expect(html).not.toContain('font-awesome');
+    expect(html).not.toContain('<i class="fa');
+  });
+
+  it('puts Experience before Skills', () => {
+    const html = render(fixture as ResumeSchema);
+    expect(html.indexOf('Professional Experience')).toBeGreaterThan(-1);
+    expect(html.indexOf('Professional Experience')).toBeLessThan(html.indexOf('Core Skills'));
   });
 
   it('renders empty resume without crashing', () => {

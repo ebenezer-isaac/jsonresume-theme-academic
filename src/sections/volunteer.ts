@@ -20,10 +20,16 @@ export function renderVolunteer(
             ? `${v.position} \u2013 ${v.organization}`
             : v.organization;
           const summary = richText(v.summary);
+          const highlights = has(v.highlights)
+            ? `
+        <ul class="work-highlights">
+          ${v.highlights.map((h) => `<li>${richText(h)}</li>`).join('\n          ')}
+        </ul>`
+            : '';
 
           return `
       <div class="bullet-item volunteer-item">
-        <span class="vol-title">${esc(title)}${years ? ` (${esc(years)})` : ''}:</span> ${summary}
+        <span class="vol-title">${esc(title)}${years ? ` (${esc(years)})` : ''}:</span> ${summary}${highlights}
       </div>`;
         })
         .join('')}

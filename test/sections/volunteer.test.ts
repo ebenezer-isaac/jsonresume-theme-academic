@@ -65,4 +65,13 @@ describe('renderVolunteer', () => {
     );
     expect(html).toContain('<b>Important</b>');
   });
+
+  it('renders highlights as list items', () => {
+    const html = renderVolunteer(
+      [{ organization: 'NPO', summary: 'Work', highlights: ['Ran sessions', 'Wrote <b>reports</b>'] }],
+      'Volunteering',
+    );
+    expect(html).toContain('<li>Ran sessions</li>');
+    expect(html).toContain('<li>Wrote <b>reports</b></li>');
+  });
 });

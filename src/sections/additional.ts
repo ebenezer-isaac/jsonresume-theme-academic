@@ -14,6 +14,8 @@ export function renderAdditional(resume: ResumeSchema, heading: string): string 
         parts.push(
           `<div class="additional-line"><span class="additional-label">${esc(label)}:</span> ${esc(keywords)}</div>`,
         );
+      } else if (interest.name) {
+        parts.push(`<div class="additional-line">${esc(interest.name)}</div>`);
       }
     }
   }

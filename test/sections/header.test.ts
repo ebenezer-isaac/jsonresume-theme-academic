@@ -20,40 +20,39 @@ describe('renderHeader', () => {
       location: { city: 'London', region: 'GB' },
     });
     expect(html).toContain('London, United Kingdom');
-    expect(html).toContain('fa-location-dot');
   });
 
-  it('renders phone with icon', () => {
+  it('renders phone as tel link', () => {
     const html = renderHeader({ name: 'Test', phone: '+1 555-0100' });
     expect(html).toContain('+1 555-0100');
-    expect(html).toContain('fa-square-phone');
+    expect(html).toContain('href="tel:+15550100"');
   });
 
-  it('renders email with icon', () => {
+  it('renders email as mailto link', () => {
     const html = renderHeader({ name: 'Test', email: 'test@example.com' });
     expect(html).toContain('test@example.com');
-    expect(html).toContain('fa-envelope');
+    expect(html).toContain('href="mailto:test@example.com"');
   });
 
   it('renders URL without protocol', () => {
     const html = renderHeader({ name: 'Test', url: 'https://example.com/portfolio' });
     expect(html).toContain('example.com/portfolio');
-    expect(html).not.toContain('https://');
-    expect(html).toContain('fa-globe');
+    expect(html).toContain('>example.com/portfolio</a>');
+    expect(html).toContain('href="https://example.com/portfolio"');
   });
 
-  it('renders profile icons', () => {
+  it('shows profile URLs, not bare usernames, and links them', () => {
     const html = renderHeader({
       name: 'Test',
       profiles: [
-        { network: 'LinkedIn', username: 'johndoe' },
+        { network: 'LinkedIn', username: 'johndoe', url: 'https://www.linkedin.com/in/johndoe/' },
         { network: 'GitHub', username: 'johndoe' },
-        { network: 'Twitter', username: 'johndoe' },
       ],
     });
-    expect(html).toContain('fa-linkedin-in');
-    expect(html).toContain('fa-github');
-    expect(html).toContain('fa-x-twitter');
+    expect(html).toContain('>www.linkedin.com/in/johndoe</a>');
+    expect(html).toContain('href="https://www.linkedin.com/in/johndoe/"');
+    expect(html).toContain('johndoe');
+    expect(html).not.toContain('<i class=');
   });
 
   it('escapes HTML in name', () => {

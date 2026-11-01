@@ -1,13 +1,14 @@
 import type { ResumeBasics } from '../types/resume.js';
 import { esc } from '../utils/escape.js';
 import { regionName } from '../utils/dates.js';
-import { profileIcon } from '../utils/icons.js';
 import { has } from '../utils/text.js';
 
 interface ContactLine {
-  readonly icon: string;
   readonly text: string;
+  readonly href?: string;
 }
+
+const displayUrl = (url: string): string => url.replace(/^https?:\/\//i, '').replace(/\/$/, '');
 
 export function renderHeader(basics: ResumeBasics | undefined): string {
   if (!basics) return '';
@@ -17,21 +18,19 @@ export function renderHeader(basics: ResumeBasics | undefined): string {
     : '';
 
   const lines: ContactLine[] = [];
-  if (location)
-    lines.push({ icon: '<i class="fa-solid fa-location-dot"></i>', text: location });
-  if (basics.phone)
-    lines.push({ icon: '<i class="fa-solid fa-square-phone"></i>', text: basics.phone });
-  if (basics.email)
-    lines.push({ icon: '<i class="fa-solid fa-envelope"></i>', text: basics.email });
-  if (basics.url) {
-    const display = basics.url.replace(/^https?:\/\//, '');
-    lines.push({ icon: '<i class="fa-solid fa-globe"></i>', text: display });
-  }
+  if (location) lines.push({ text: location });
+  if (basics.phone) lines.push({ text: basics.phone, href: `tel:${basics.phone.replace(/[^\d+]/g, '')}` });
+  if (basics.email) lines.push({ text: basics.email, href: `mailto:${basics.email}` });
+  if (basics.url) lines.push({ text: displayUrl(basics.url), href: basics.url });
   if (has(basics.profiles)) {
     for (const p of basics.profiles) {
-      lines.push({ icon: profileIcon(p.network), text: p.username || p.url || '' });
+      const text = p.url ? displayUrl(p.url) : p.username || '';
+      if (text) lines.push({ text, href: p.url });
     }
   }
+
+  const line = (l: ContactLine): string =>
+    `<div class="contact-line">${l.href ? `<a href="${esc(l.href)}">${esc(l.text)}</a>` : esc(l.text)}</div>`;
 
   return `
     <header class="header">
@@ -40,7 +39,7 @@ export function renderHeader(basics: ResumeBasics | undefined): string {
         <div class="label">${esc(basics.label)}</div>
       </div>
       <div class="contact-info">
-        ${lines.map((l) => `<div class="contact-line">${esc(l.text)} ${l.icon}</div>`).join('\n        ')}
+        ${lines.map(line).join('\n        ')}
       </div>
     </header>
     <hr class="header-rule" />`;

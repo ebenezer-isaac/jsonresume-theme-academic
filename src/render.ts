@@ -35,15 +35,14 @@ export function render(resume: ResumeSchema): string {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>${css}</style>
 </head>
 <body>
   <div class="resume">
     ${renderHeader(basics)}
     ${renderSummary(basics.summary, h.summary)}
-    ${renderSkills(resume.skills, h.skills)}
     ${renderWork(resume.work, h.experience)}
+    ${renderSkills(resume.skills, h.skills)}
     ${renderProjects(resume.projects, h.projects)}
     ${renderEducation(resume.education, h.education)}
     ${renderVolunteer(resume.volunteer, h.volunteer)}

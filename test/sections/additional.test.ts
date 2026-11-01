@@ -20,11 +20,14 @@ describe('renderAdditional', () => {
     expect(html).toContain('AI, ML, NLP');
   });
 
-  it('skips interests without keywords', () => {
-    const resume: ResumeSchema = {
-      interests: [{ name: 'Reading' }],
-    };
-    expect(renderAdditional(resume, 'Additional')).toBe('');
+  it('renders interests that have a name but no keywords', () => {
+    const html = renderAdditional({ interests: [{ name: 'Reading' }, { name: 'Guitar' }] }, 'Additional');
+    expect(html).toContain('Reading');
+    expect(html).toContain('Guitar');
+  });
+
+  it('skips interests with neither name nor keywords', () => {
+    expect(renderAdditional({ interests: [{}] }, 'Additional')).toBe('');
   });
 
   it('uses "Interests" as default label when name missing', () => {

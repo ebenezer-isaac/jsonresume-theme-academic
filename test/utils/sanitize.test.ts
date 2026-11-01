@@ -138,4 +138,26 @@ describe('sanitizeHtml', () => {
     expect(result).toBe('<b>text</b>');
     expect(result).not.toContain('style');
   });
+
+  it('drops style and event handlers from anchors, whatever the quoting', () => {
+    const cases = [
+      '<a href="https://x.com" style="color:red">x</a>',
+      '<a style="color:red" href="https://x.com">x</a>',
+      "<a href='https://x.com' style='color:red' onclick='e()'>x</a>",
+      '<a href=https://x.com style=color:red>x</a>',
+      '<A HREF="https://x.com" STYLE="color:red">x</A>',
+    ];
+    for (const c of cases) {
+      const out = sanitizeHtml(c);
+      expect(out).toBe('<a href="https://x.com" target="_blank" rel="noopener">x</a>');
+    }
+  });
+
+  it('drops class extras and handlers from mark', () => {
+    expect(sanitizeHtml("<mark class='k' onclick='e()' style='x'>m</mark>")).toBe('<mark class="k">m</mark>');
+  });
+
+  it('strips anchors with unsafe single-quoted hrefs', () => {
+    expect(sanitizeHtml("<a href='javascript:alert(1)'>x</a>")).not.toContain('javascript');
+  });
 });

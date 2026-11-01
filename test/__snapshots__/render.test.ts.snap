@@ -10,7 +10,6 @@ exports[`render > renders full resume matching snapshot 1`] = `
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style></style>
 </head>
 <body>
@@ -22,33 +21,19 @@ exports[`render > renders full resume matching snapshot 1`] = `
         <div class="label">Senior Software Engineer &amp; Technical Lead</div>
       </div>
       <div class="contact-info">
-        <div class="contact-line">San Francisco, Canada <i class="fa-solid fa-location-dot"></i></div>
-        <div class="contact-line">+1 (555) 123-4567 <i class="fa-solid fa-square-phone"></i></div>
-        <div class="contact-line">richard@piedpiper.com <i class="fa-solid fa-envelope"></i></div>
-        <div class="contact-line">richardhendriks.dev <i class="fa-solid fa-globe"></i></div>
-        <div class="contact-line">richardhendriks <i class="fa-brands fa-linkedin-in"></i></div>
-        <div class="contact-line">richardhendriks <i class="fa-brands fa-github"></i></div>
-        <div class="contact-line">richard_h <i class="fa-brands fa-x-twitter"></i></div>
+        <div class="contact-line">San Francisco, Canada</div>
+        <div class="contact-line"><a href="tel:+15551234567">+1 (555) 123-4567</a></div>
+        <div class="contact-line"><a href="mailto:richard@piedpiper.com">richard@piedpiper.com</a></div>
+        <div class="contact-line"><a href="https://richardhendriks.dev">richardhendriks.dev</a></div>
+        <div class="contact-line"><a href="https://linkedin.com/in/richardhendriks">linkedin.com/in/richardhendriks</a></div>
+        <div class="contact-line"><a href="https://github.com/richardhendriks">github.com/richardhendriks</a></div>
+        <div class="contact-line"><a href="https://twitter.com/richard_h">twitter.com/richard_h</a></div>
       </div>
     </header>
     <hr class="header-rule" />
     
     <h2 class="section-title">Summary</h2>
     <div class="summary"><p>Innovative software engineer with 10+ years of experience building <mark class="highlight-yellow">scalable distributed systems</mark> and leading high-performance engineering teams. Passionate about data compression, algorithm optimization, and clean architecture.</p></div>
-    
-    <h2 class="section-title">Core Skills</h2>
-    <div class="section-body">
-      
-      <div class="bullet-item">
-        <span class="skill-name">Languages:</span> TypeScript, Python, Go, Rust, C++
-      </div>
-      <div class="bullet-item">
-        <span class="skill-name">Infrastructure:</span> AWS, Kubernetes, Docker, Terraform, CI/CD
-      </div>
-      <div class="bullet-item">
-        <span class="skill-name">Frameworks:</span> React, Node.js, FastAPI, gRPC
-      </div>
-    </div>
     
     <h2 class="section-title">Professional Experience</h2>
     <div class="section-body">
@@ -89,6 +74,20 @@ exports[`render > renders full resume matching snapshot 1`] = `
         <li>Contributed to open-source projects with 1,000+ GitHub stars</li>
       </ul>
     </div>
+    </div>
+    
+    <h2 class="section-title">Core Skills</h2>
+    <div class="section-body">
+      
+      <div class="bullet-item">
+        <span class="skill-name">Languages:</span> TypeScript, Python, Go, Rust, C++
+      </div>
+      <div class="bullet-item">
+        <span class="skill-name">Infrastructure:</span> AWS, Kubernetes, Docker, Terraform, CI/CD
+      </div>
+      <div class="bullet-item">
+        <span class="skill-name">Frameworks:</span> React, Node.js, FastAPI, gRPC
+      </div>
     </div>
     
     <h2 class="section-title">Selected Projects</h2>
@@ -159,7 +158,6 @@ exports[`render > renders minimal resume matching snapshot 1`] = `
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style></style>
 </head>
 <body>
