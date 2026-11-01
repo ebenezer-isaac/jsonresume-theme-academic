@@ -1,3 +1,10 @@
+# 1.4.0 (2026-11-01)
+
+
+### Bug Fixes
+
+* playbook compliance and parser gaps: render nameless-keyword interests and volunteer highlights, show contact URLs as links, rebuild anchor and mark attributes in the sanitizer, drop the icon font, put Experience before Skills, use standard bullets and a navy accent
+
 ## [1.3.1](https://github.com/ebenezer-isaac/jsonresume-theme-academic/compare/v1.3.0...v1.3.1) (2026-03-12)
 
 
